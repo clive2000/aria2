@@ -88,7 +88,7 @@ int main(int argc, char** argv)
 {  
   // Write arguments to file
   std::ofstream outfile;
-  outfile.open('arguments.txt');
+  outfile.open("arguments.txt");
 
   // Print arguments
   std::cout << "Have " << argc << " arguments:" << std::endl;
