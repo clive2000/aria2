@@ -11,7 +11,7 @@
 # $ sudo docker cp $id:/aria2/src/aria2c.exe <dest>
 # $ sudo docker rm -v $id
 
-FROM ubuntu:19.04
+FROM ubuntu:18.04
 
 MAINTAINER Tatsuhiro Tsujikawa
 
@@ -105,7 +105,7 @@ RUN tar xf libssh2-1.9.0.tar.gz && \
         --with-wincng \
         LIBS="-lws2_32" && \
     make install
-ADD https://api.github.com/repos/aria2/aria2/git/refs/heads/master version.json
-RUN git clone https://github.com/aria2/aria2 && \
+ADD https://api.github.com/repos/clive2000/aria2/git/refs/heads/master version.json
+RUN git clone https://github.com/clive2000/aria2 && \
     cd aria2 && autoreconf -i && ./mingw-config && make && \
     $HOST-strip src/aria2c.exe

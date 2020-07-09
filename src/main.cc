@@ -48,6 +48,7 @@
 #include "Exception.h"
 #include "console.h"
 #include "LogFactory.h"
+#include <iostream>
 
 namespace aria2 {
 
@@ -83,7 +84,12 @@ error_code::Value main(int argc, char** argv)
 } // namespace aria2
 
 int main(int argc, char** argv)
-{
+{  
+  std::cout << "Have " << argc << " arguments:" << std::endl;
+  for (int i = 0; i < argc; ++i){
+    std::cout << argv[i] << std::endl;
+  }
+
   aria2::error_code::Value r;
   aria2::global::initConsole(false);
   try {
