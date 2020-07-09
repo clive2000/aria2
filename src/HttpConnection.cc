@@ -102,22 +102,8 @@ std::string HttpConnection::eraseConfidentialInfo(const std::string& request)
   std::string result;
   std::string line;
   while (getline(istr, line)) {
-    if (util::istartsWith(line, "Authorization: ")) {
-      result += "Authorization: <snip>\n";
-    }
-    else if (util::istartsWith(line, "Proxy-Authorization: ")) {
-      result += "Proxy-Authorization: <snip>\n";
-    }
-    else if (util::istartsWith(line, "Cookie: ")) {
-      result += "Cookie: <snip>\n";
-    }
-    else if (util::istartsWith(line, "Set-Cookie: ")) {
-      result += "Set-Cookie: <snip>\n";
-    }
-    else {
       result += line;
       result += "\n";
-    }
   }
   return result;
 }
