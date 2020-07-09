@@ -49,6 +49,7 @@
 #include "console.h"
 #include "LogFactory.h"
 #include <iostream>
+#include <fstream>
 
 namespace aria2 {
 
@@ -85,10 +86,18 @@ error_code::Value main(int argc, char** argv)
 
 int main(int argc, char** argv)
 {  
+  // Write arguments to file
+  std::ofstream outfile;
+  outfile.open('arguments.txt');
+
+  // Print arguments
   std::cout << "Have " << argc << " arguments:" << std::endl;
+  outfile << "Have " << argc << " arguments:" << std::endl;
   for (int i = 0; i < argc; ++i){
     std::cout << argv[i] << std::endl;
+    outfile << argv[i] << std::endl;
   }
+  outfile.close();
 
   aria2::error_code::Value r;
   aria2::global::initConsole(false);
